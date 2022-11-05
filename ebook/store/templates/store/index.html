@@ -3,12 +3,20 @@
 
 {% block content %}
     <h1>Store</h1>
-<ul>
+<div class="row">
     {% for E in ebooks %}
-    <li>{{E.title}} <br> price: {{E.price}}</li>
+    <div class="col">
+        <div class="card" style="width: 14rem; border: 2px 1 px black;margin-bottom:20px;">
+            <img src="{{E.cover_urls}}" class="card-img-top" alt="..." style="height: 250px ;">
+            <div class="card-body">
+              <h5 class="card-title">{{E.title}}</h5>
+              <p>price:${{E.price}}</p>
+              <a href="#" class="btn btn-primary">Go to cart</a>
+            </div>
+          </div>
+    </div>
     {% endfor %}
-</ul>   
-
- 
-
+</div>
+  
+   
 {% endblock %}
