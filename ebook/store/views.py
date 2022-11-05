@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
+from .models import Ebook
 # Create your views here.
 
 def store_view(request):
-    return render(request,'store\index.html')
+    ebooks={'ebooks':Ebook.objects.all()}
+    return render(request,'store\index.html',ebooks)
 
