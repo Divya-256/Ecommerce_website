@@ -11,7 +11,10 @@
             <div class="card-body">
               <h5 class="card-title">{{E.title}}</h5>
               <p>price:${{E.price}}</p>
-              <a href="#" class="btn btn-primary">Go to cart</a>
+              <form class="form" action="" method="post">
+                <button class="btn btn-primary" type="submit" name="book_id" value="{{E.id}}">Add to cart</button>
+              </form>
+          
             </div>
           </div>
     </div>
