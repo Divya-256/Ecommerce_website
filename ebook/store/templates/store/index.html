@@ -11,8 +11,10 @@
             <div class="card-body">
               <h5 class="card-title">{{E.title}}</h5>
               <p>price:${{E.price}}</p>
-              <form class="form" action="" method="post">
-                <button class="btn btn-primary" type="submit" name="book_id" value="{{E.id}}">Add to cart</button>
+              <form class="form" method="post">
+                {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="Add to cart">
+                <input type="hidden" name="book_id" value="{{E.id}}">
               </form>
           
             </div>
