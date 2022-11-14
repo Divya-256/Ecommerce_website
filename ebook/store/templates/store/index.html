@@ -13,7 +13,8 @@
               <p>price:${{E.price}}</p>
               <form class="form" method="post">
                 {% csrf_token %}
-                <input class="btn btn-primary" type="submit" value="Add to cart">
+               
+                <input class="btn btn-primary" style="margin-left:40px;" type="submit" value="Add to cart">
                 <input type="hidden" name="book_id" value="{{E.id}}">
               </form>
           
