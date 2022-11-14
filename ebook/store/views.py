@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,HttpResponseRedirect
 from .models import Ebook,Cart_Items
 from django.views.generic import ListView
 # Create your views here.
@@ -23,22 +23,19 @@ def cart_view(request):
     cart_total =0
     for items in CART_ITEMS:
         cart_total+=items.price
-
+    
     return render(request,'store\cart.html',{
         'cart_items':CART_ITEMS,
         'cart_total':cart_total
     })
 
 def del_cart_items(request):
-    if request.method== "POST":
-        item_id = request.POST.get['item_id']
         CART_ITEMS=Cart_Items.objects.all()
-        Cart_Items.objects.get(pk=item_id).delete()
-        if Cart_Items.objects.get(pk=item_id).delete()!=CART_ITEMS:
-                    cart = Cart_Items.objects.create(title=item_id.title,price=item_id.price)
-
-        cart.save()
-        return render(request,'store\cart.html\del_cart_items',{cart})
+        if request.method== "POST":
+            item_id = request.POST['item_id']
+            Cart_Items.objects.get(pk=item_id).delete()
+        return HttpResponseRedirect('/store/cart')
+        
      
     
         

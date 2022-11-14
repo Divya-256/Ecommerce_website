@@ -2,21 +2,25 @@
 {% extends 'store\base.html' %}
 
 {% block content %}
+
 <ul class="list-group mt-4">
+ {% if cart_items %}
   {% for Items in cart_items %}
     <li class="list-group-item">
-     
-      {{ Items.title}}
+           {{ Items.title}}
       <div class="float-end">
-        <form class="inline" action="del_cart_items" method="post" >
+              <form class="form-inline" action="del_cart_items/" method="post" >
           {% csrf_token %}
           <button class="btn btn-danger" type="submit" name="item_id" value="{{Items.id}}">DELETE</button>
         </form>
-
       </div>
-
     </li>
   {% endfor %} 
   <li class="list-group-item active" aria-current="true">cart subtotal:${{cart_total}}</li> 
+
+  {% else %}
+  <li class="list-group-item">Cart is empty!!</li>
+  {% endif %}
 </ul>
+
 {% endblock %}
